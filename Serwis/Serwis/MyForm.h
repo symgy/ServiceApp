@@ -1,5 +1,5 @@
 #pragma once
-#include "logowanie.h"
+//#include "logowanie.h"
 
 namespace Serwis {
 
@@ -84,6 +84,9 @@ namespace Serwis {
 	private: System::Windows::Forms::Button^  btnUDodaj;
 	private: System::Windows::Forms::TabPage^  tabPage4;
 	private: System::Windows::Forms::TabPage^  tabPage5;
+	private: System::Windows::Forms::RichTextBox^  rtbUOpis;
+	private: System::Windows::Forms::GroupBox^  groupBox4;
+
 
 	private: System::ComponentModel::IContainer^  components;
 
@@ -131,12 +134,15 @@ namespace Serwis {
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
+			this->rtbUOpis = (gcnew System::Windows::Forms::RichTextBox());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->tabControl1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUrzadzenia))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			this->groupBox4->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -158,8 +164,8 @@ namespace Serwis {
 			// 
 			// tabPage2
 			// 
-			this->tabPage2->Controls->Add(this->dgUrzadzenia);
 			this->tabPage2->Controls->Add(this->groupBox1);
+			this->tabPage2->Controls->Add(this->dgUrzadzenia);
 			this->tabPage2->ImageIndex = 2;
 			this->tabPage2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->tabPage2->Location = System::Drawing::Point(4, 4);
@@ -183,6 +189,7 @@ namespace Serwis {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->groupBox4);
 			this->groupBox1->Controls->Add(this->groupBox3);
 			this->groupBox1->Controls->Add(this->btnUSzukaj);
 			this->groupBox1->Controls->Add(this->tbUSzukaj);
@@ -209,9 +216,9 @@ namespace Serwis {
 			this->groupBox3->Controls->Add(this->label3);
 			this->groupBox3->Controls->Add(this->label2);
 			this->groupBox3->Controls->Add(this->label1);
-			this->groupBox3->Location = System::Drawing::Point(14, 94);
+			this->groupBox3->Location = System::Drawing::Point(6, 94);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(247, 205);
+			this->groupBox3->Size = System::Drawing::Size(264, 205);
 			this->groupBox3->TabIndex = 15;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Dane podstawowe";
@@ -325,26 +332,28 @@ namespace Serwis {
 			// btnUUsun
 			// 
 			this->btnUUsun->Enabled = false;
-			this->btnUUsun->Location = System::Drawing::Point(195, 458);
+			this->btnUUsun->Location = System::Drawing::Point(192, 465);
 			this->btnUUsun->Name = L"btnUUsun";
 			this->btnUUsun->Size = System::Drawing::Size(75, 23);
 			this->btnUUsun->TabIndex = 12;
 			this->btnUUsun->Text = L"usuñ";
 			this->btnUUsun->UseVisualStyleBackColor = true;
+			this->btnUUsun->Click += gcnew System::EventHandler(this, &MyForm::btnUUsun_Click);
 			// 
 			// btnUModyfikuj
 			// 
 			this->btnUModyfikuj->Enabled = false;
-			this->btnUModyfikuj->Location = System::Drawing::Point(104, 458);
+			this->btnUModyfikuj->Location = System::Drawing::Point(101, 465);
 			this->btnUModyfikuj->Name = L"btnUModyfikuj";
 			this->btnUModyfikuj->Size = System::Drawing::Size(75, 23);
 			this->btnUModyfikuj->TabIndex = 11;
 			this->btnUModyfikuj->Text = L"modyfikuj";
 			this->btnUModyfikuj->UseVisualStyleBackColor = true;
+			this->btnUModyfikuj->Click += gcnew System::EventHandler(this, &MyForm::btnUModyfikuj_Click);
 			// 
 			// btnUDodaj
 			// 
-			this->btnUDodaj->Location = System::Drawing::Point(14, 458);
+			this->btnUDodaj->Location = System::Drawing::Point(11, 465);
 			this->btnUDodaj->Name = L"btnUDodaj";
 			this->btnUDodaj->Size = System::Drawing::Size(75, 23);
 			this->btnUDodaj->TabIndex = 10;
@@ -357,9 +366,9 @@ namespace Serwis {
 			this->groupBox2->Controls->Add(this->rbUusluga);
 			this->groupBox2->Controls->Add(this->rbUPrzeglad);
 			this->groupBox2->Controls->Add(this->rbUNaprawa);
-			this->groupBox2->Location = System::Drawing::Point(14, 317);
+			this->groupBox2->Location = System::Drawing::Point(6, 303);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(247, 115);
+			this->groupBox2->Size = System::Drawing::Size(264, 55);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Kategoria";
@@ -367,7 +376,7 @@ namespace Serwis {
 			// rbUusluga
 			// 
 			this->rbUusluga->AutoSize = true;
-			this->rbUusluga->Location = System::Drawing::Point(7, 75);
+			this->rbUusluga->Location = System::Drawing::Point(189, 26);
 			this->rbUusluga->Name = L"rbUusluga";
 			this->rbUusluga->Size = System::Drawing::Size(58, 17);
 			this->rbUusluga->TabIndex = 2;
@@ -378,7 +387,7 @@ namespace Serwis {
 			// 
 			this->rbUPrzeglad->AutoSize = true;
 			this->rbUPrzeglad->Checked = true;
-			this->rbUPrzeglad->Location = System::Drawing::Point(7, 29);
+			this->rbUPrzeglad->Location = System::Drawing::Point(7, 26);
 			this->rbUPrzeglad->Name = L"rbUPrzeglad";
 			this->rbUPrzeglad->Size = System::Drawing::Size(65, 17);
 			this->rbUPrzeglad->TabIndex = 1;
@@ -389,7 +398,7 @@ namespace Serwis {
 			// rbUNaprawa
 			// 
 			this->rbUNaprawa->AutoSize = true;
-			this->rbUNaprawa->Location = System::Drawing::Point(7, 52);
+			this->rbUNaprawa->Location = System::Drawing::Point(98, 26);
 			this->rbUNaprawa->Name = L"rbUNaprawa";
 			this->rbUNaprawa->Size = System::Drawing::Size(66, 17);
 			this->rbUNaprawa->TabIndex = 0;
@@ -449,6 +458,24 @@ namespace Serwis {
 			this->imageList1->Images->SetKeyName(3, L"40-turn-off.png");
 			this->imageList1->Images->SetKeyName(4, L"icon100_com_137.png");
 			// 
+			// rtbUOpis
+			// 
+			this->rtbUOpis->Location = System::Drawing::Point(6, 19);
+			this->rtbUOpis->Name = L"rtbUOpis";
+			this->rtbUOpis->Size = System::Drawing::Size(252, 62);
+			this->rtbUOpis->TabIndex = 16;
+			this->rtbUOpis->Text = L"";
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->rtbUOpis);
+			this->groupBox4->Location = System::Drawing::Point(6, 365);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(264, 87);
+			this->groupBox4->TabIndex = 17;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Opis";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -468,6 +495,7 @@ namespace Serwis {
 			this->groupBox3->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -479,9 +507,25 @@ namespace Serwis {
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
 
+ private: Void wyczysc(Control^ kontrolki){
+						  for each (Control^ pole in kontrolki->Controls)
+						  {
+							  if (pole->GetType() == TextBox::typeid){ //jezeli kontrolka jest text boxem
+								  pole->Text = "";	  
+							  }
+							  else if (pole->GetType() == ComboBox::typeid){ //jezeli kontrolka jest typu combo box
+								  pole->Text = "";
+							  }
+							  else if (pole->GetType() == RichTextBox::typeid){
+								  pole->Text = "";
+							  }
+
+						  }
+			 }
+
 private: Void pokaz_siatke(){
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT urzadzenie_id, typ, nazwa, nr_seryjny, wlasciciel, serwisant, kategoria FROM serwis.urzadzenie ORDER BY nazwa;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT urzadzenie_id, typ, nazwa, nr_seryjny, wlasciciel, serwisant, kategoria, opis FROM serwis.urzadzenie ORDER BY nazwa;", laczBaze);
 
 			 try {
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs pomiedzy baza a danumi
@@ -503,7 +547,7 @@ private: Void pokaz_siatke(){
 
 private: System::Void btnUSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT urzadzenie_id, typ, nazwa, nr_seryjny, wlasciciel, serwisant, kategoria FROM serwis.urzadzenie WHERE CONCAT(nazwa, ' ', nr_seryjny, wlasciciel, kategoria, serwisant) LIKE '%" + tbUSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT urzadzenie_id, typ, nazwa, nr_seryjny, wlasciciel, serwisant, kategoria, opis FROM serwis.urzadzenie WHERE CONCAT(nazwa, ' ', nr_seryjny, wlasciciel, kategoria, serwisant) LIKE '%" + tbUSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
 
 			 try{
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
@@ -519,7 +563,9 @@ private: System::Void btnUSzukaj_Click(System::Object^  sender, System::EventArg
 			 catch (Exception^ komunikat){
 				 MessageBox::Show(komunikat->Message);
 			 }
-
+			 dgUrzadzenia->Columns[0]->Visible = false; // uktywamy urzadzenie id
+			
+			
 }
 
 private: System::Void dgUrzadzenia_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
@@ -531,6 +577,7 @@ private: System::Void dgUrzadzenia_CellClick(System::Object^  sender, System::Wi
 				 tbUWlasciciel->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["wlasciciel"]->Value->ToString();
 				 cbUTyp->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["typ"]->Value->ToString();
 				 cbUSerwisant->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["serwisant"]->Value->ToString();
+				 rtbUOpis->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["opis"]->Value->ToString();
 				 
 				 
 				 kategoria = dgUrzadzenia->Rows[e->RowIndex]->Cells["kategoria"]->Value->ToString();
@@ -541,6 +588,7 @@ private: System::Void dgUrzadzenia_CellClick(System::Object^  sender, System::Wi
 
 				btnUModyfikuj->Enabled = true;
 				btnUUsun->Enabled = true;
+
 
 			 }
 
@@ -571,7 +619,7 @@ private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs
 				 if (rbUusluga->Checked == true) kategoria = "us³uga";
 
 				 try{
-					 polecenie->CommandText = "INSERT INTO urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "' ";
+					 polecenie->CommandText = "INSERT INTO urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' ";
 					 polecenie->ExecuteNonQuery();
 					 transakcja->Commit();
 				 }
@@ -585,16 +633,67 @@ private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs
 			 pokaz_siatke();
 }
 private: System::Void tabControl1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			 logowanie^ loguj = gcnew logowanie();
+			 /*logowanie^ loguj = gcnew logowanie();
 			 if (tabControl1->SelectedTab->TabIndex == 3) this->Close();
 			 if (tabControl1->SelectedTab->TabIndex == 4) {
 				 this->Hide();
 				 loguj->ShowDialog();
-			 }
+			 }	*/	 
+}
 
-				 
-				 
-				 
+private: System::Void btnUUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			 MySqlCommand^ polecenie = laczBaze->CreateCommand();
+			 MySqlTransaction^ transakcja;
+			 laczBaze->Open();
+			 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+			 polecenie->Connection = laczBaze;
+			 polecenie->Transaction = transakcja;
+
+			 try{
+				 if (MessageBox::Show("Czy na pewno chcesz usun¹æ wybrane urz¹dzenie?", "UWAGA!!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
+
+					 polecenie->CommandText = "DELETE  FROM urzadzenie WHERE urzadzenie_id=" + id_rekordu + ";";
+					 polecenie->ExecuteNonQuery();
+
+					 transakcja->Commit(); // rozpoczecie transakcji mysql
+					 MessageBox::Show("Urz¹dzenie zosta³o usuniête");
+				 }
+			 }
+			 catch (Exception^ komunikat){
+				 MessageBox::Show(komunikat->Message);
+				 transakcja->Rollback(); //cofanie transakcji
+			 }
+			 laczBaze->Close();
+			 wyczysc(groupBox3); //czyszczenie zawartosci pol 
+			 pokaz_siatke(); //Refresh tabeli
+
+}
+private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (tbUNazwa->Text->Length < 3 || tbUSeryjny->Text->Length < 3 || tbUWlasciciel->Text->Length < 3 || cbUTyp->Text->Length < 3 || cbUSerwisant->Text->Length < 3){
+				 MessageBox::Show("Uzupe³nij brakuj¹ce dane !");
+			 }
+			 else{
+				 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				 MySqlCommand^ polecenie = laczBaze->CreateCommand();
+				 MySqlTransaction^ transakcja;
+				 laczBaze->Open();
+				 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);  //odczyt zatwierdzonych danych
+				 polecenie->Connection = laczBaze;
+				 polecenie->Transaction = transakcja;
+
+				 try{
+					 polecenie->CommandText = "UPDATE urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' WHERE urzadzenie_id="+id_rekordu+" ";
+					 polecenie->ExecuteNonQuery(); 
+					 transakcja->Commit(); // rozpoczecie transakcji mysql
+				 }
+				 catch (Exception^ komunikat){
+					 MessageBox::Show(komunikat->Message);
+					 transakcja->Rollback(); //cofanie transakcji
+				 }
+				 laczBaze->Close();
+			 }
+			 pokaz_siatke();
 }
 };
 }
