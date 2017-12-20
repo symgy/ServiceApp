@@ -1,5 +1,5 @@
 #include "MyForm.h"
-
+/*
 
 
 
@@ -15,3 +15,4 @@ int main(array<String ^> ^args){
 	Application::Run(%forma);
 	return 0;
 }
+*/
