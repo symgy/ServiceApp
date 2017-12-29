@@ -203,14 +203,18 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			 String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=NU=zupsko33;database=serwis"; //L oznacza rozszerzony zapis
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM serwis.uzytkownik WHERE login = '" + tbLogin -> Text + "' AND haslo='" + tbHaslo ->Text + "';", laczBaze);
+			
 
 			 MySqlDataReader^ odczytanie;
+			 
 			 try {
 				 laczBaze->Open(); // otwieramy polaczenie z baza
 				 odczytanie = zapytanie->ExecuteReader();
+				 
 
 				 if (odczytanie->Read()){
 					 int id_uzytkownik = odczytanie->GetInt32(0);
+					 
 					 this->Hide();
 					MyForm^ serwis= gcnew MyForm(id_uzytkownik);
 					serwis->ShowDialog();

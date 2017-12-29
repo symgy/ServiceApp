@@ -19,6 +19,7 @@ namespace Serwis {
 	{
 	public:
 		int id_uzytkownika;
+		
 	private: System::Windows::Forms::DataGridView^  dgPodmioty;
 	public:
 	private: System::Windows::Forms::GroupBox^  groupBox5;
@@ -39,18 +40,46 @@ namespace Serwis {
 	private: System::Windows::Forms::Button^  btnPModyfikuj;
 	private: System::Windows::Forms::Button^  btnPDodaj;
 	private: System::Windows::Forms::GroupBox^  groupBox8;
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::Button^  button3;
-	private: System::Windows::Forms::TextBox^  textBox4;
+	private: System::Windows::Forms::Button^  btnUstUsun;
+
+	private: System::Windows::Forms::Button^  btnUstModyfikuj;
+
+	private: System::Windows::Forms::Button^  btnUstDodaj;
+
+	private: System::Windows::Forms::TextBox^  tbUstLogin;
+
+
+
 	private: System::Windows::Forms::Label^  label13;
-	private: System::Windows::Forms::TextBox^  textBox3;
-	private: System::Windows::Forms::TextBox^  textBox2;
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  tbUstPowtorzH;
+
+	private: System::Windows::Forms::TextBox^  tbUstNoweH;
+
+
+	private: System::Windows::Forms::TextBox^  tbUstStareH;
+
+
+
+
 	private: System::Windows::Forms::Label^  label12;
 	private: System::Windows::Forms::Label^  label11;
 	private: System::Windows::Forms::Label^  label10;
-	private: System::Windows::Forms::ComboBox^  tbUWlasciciel;
+	private: System::Windows::Forms::Button^  btnUWybierz;
+
+	private: System::Windows::Forms::TextBox^  tbUWlasciciel;
+	private: System::Windows::Forms::Button^  btnPPrzypisz;
+	private: System::Windows::Forms::DataGridView^  dgUstawienia;
+	private: System::Windows::Forms::Button^  btnUstSzukaj;
+	private: System::Windows::Forms::TextBox^  tbUstSzukaj;
+	private: System::Windows::Forms::TextBox^  tbUstImie;
+	private: System::Windows::Forms::Label^  label15;
+	private: System::Windows::Forms::TextBox^  tbUstNazwisko;
+	private: System::Windows::Forms::Label^  label14;
+	private: System::Windows::Forms::Label^  label16;
+
+
+
+
 
 	public:
 		String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=NU=zupsko33;database=serwis"; //L oznacza rozszerzony zapis
@@ -58,6 +87,7 @@ namespace Serwis {
 		{
 			InitializeComponent();
 			id_uzytkownika = uzytkownik;
+			
 			//
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
@@ -119,7 +149,7 @@ namespace Serwis {
 
 	private: System::Windows::Forms::Button^  btnUDodaj;
 	private: System::Windows::Forms::TabPage^  tabPage4;
-	private: System::Windows::Forms::TabPage^  tabPage5;
+
 	private: System::Windows::Forms::RichTextBox^  rtbUOpis;
 	private: System::Windows::Forms::GroupBox^  groupBox4;
 
@@ -147,7 +177,8 @@ namespace Serwis {
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->rtbUOpis = (gcnew System::Windows::Forms::RichTextBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->tbUWlasciciel = (gcnew System::Windows::Forms::ComboBox());
+			this->btnUWybierz = (gcnew System::Windows::Forms::Button());
+			this->tbUWlasciciel = (gcnew System::Windows::Forms::TextBox());
 			this->cbUSerwisant = (gcnew System::Windows::Forms::ComboBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->tbUSeryjny = (gcnew System::Windows::Forms::TextBox());
@@ -170,6 +201,7 @@ namespace Serwis {
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
 			this->dgPodmioty = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->btnPPrzypisz = (gcnew System::Windows::Forms::Button());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->rtbPOpis = (gcnew System::Windows::Forms::RichTextBox());
 			this->groupBox7 = (gcnew System::Windows::Forms::GroupBox());
@@ -187,19 +219,26 @@ namespace Serwis {
 			this->btnPModyfikuj = (gcnew System::Windows::Forms::Button());
 			this->btnPDodaj = (gcnew System::Windows::Forms::Button());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->dgUstawienia = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox8 = (gcnew System::Windows::Forms::GroupBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->tbUstImie = (gcnew System::Windows::Forms::TextBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->tbUstNazwisko = (gcnew System::Windows::Forms::TextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->btnUstSzukaj = (gcnew System::Windows::Forms::Button());
+			this->tbUstSzukaj = (gcnew System::Windows::Forms::TextBox());
+			this->btnUstUsun = (gcnew System::Windows::Forms::Button());
+			this->btnUstModyfikuj = (gcnew System::Windows::Forms::Button());
+			this->btnUstDodaj = (gcnew System::Windows::Forms::Button());
+			this->tbUstLogin = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->tbUstPowtorzH = (gcnew System::Windows::Forms::TextBox());
+			this->tbUstNoweH = (gcnew System::Windows::Forms::TextBox());
+			this->tbUstStareH = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
 			this->tabControl1->SuspendLayout();
@@ -215,6 +254,7 @@ namespace Serwis {
 			this->groupBox6->SuspendLayout();
 			this->groupBox7->SuspendLayout();
 			this->tabPage1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUstawienia))->BeginInit();
 			this->groupBox8->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -224,7 +264,6 @@ namespace Serwis {
 			this->tabControl1->Controls->Add(this->tabPage2);
 			this->tabControl1->Controls->Add(this->tabPage3);
 			this->tabControl1->Controls->Add(this->tabPage1);
-			this->tabControl1->Controls->Add(this->tabPage5);
 			this->tabControl1->Controls->Add(this->tabPage4);
 			this->tabControl1->ImageList = this->imageList1;
 			this->tabControl1->Location = System::Drawing::Point(1, 1);
@@ -259,9 +298,9 @@ namespace Serwis {
 			this->groupBox1->Controls->Add(this->btnUModyfikuj);
 			this->groupBox1->Controls->Add(this->btnUDodaj);
 			this->groupBox1->Controls->Add(this->groupBox2);
-			this->groupBox1->Location = System::Drawing::Point(22, 6);
+			this->groupBox1->Location = System::Drawing::Point(7, 6);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(276, 497);
+			this->groupBox1->Size = System::Drawing::Size(314, 497);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Urz¹dzenia";
@@ -271,7 +310,7 @@ namespace Serwis {
 			this->groupBox4->Controls->Add(this->rtbUOpis);
 			this->groupBox4->Location = System::Drawing::Point(6, 365);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(264, 87);
+			this->groupBox4->Size = System::Drawing::Size(302, 87);
 			this->groupBox4->TabIndex = 17;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Opis";
@@ -280,12 +319,13 @@ namespace Serwis {
 			// 
 			this->rtbUOpis->Location = System::Drawing::Point(6, 19);
 			this->rtbUOpis->Name = L"rtbUOpis";
-			this->rtbUOpis->Size = System::Drawing::Size(252, 62);
+			this->rtbUOpis->Size = System::Drawing::Size(290, 62);
 			this->rtbUOpis->TabIndex = 16;
 			this->rtbUOpis->Text = L"";
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->btnUWybierz);
 			this->groupBox3->Controls->Add(this->tbUWlasciciel);
 			this->groupBox3->Controls->Add(this->cbUSerwisant);
 			this->groupBox3->Controls->Add(this->label5);
@@ -298,18 +338,26 @@ namespace Serwis {
 			this->groupBox3->Controls->Add(this->label1);
 			this->groupBox3->Location = System::Drawing::Point(6, 94);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(264, 205);
+			this->groupBox3->Size = System::Drawing::Size(302, 205);
 			this->groupBox3->TabIndex = 15;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Dane podstawowe";
 			// 
+			// btnUWybierz
+			// 
+			this->btnUWybierz->Location = System::Drawing::Point(233, 127);
+			this->btnUWybierz->Name = L"btnUWybierz";
+			this->btnUWybierz->Size = System::Drawing::Size(63, 22);
+			this->btnUWybierz->TabIndex = 16;
+			this->btnUWybierz->Text = L"Wybierz";
+			this->btnUWybierz->UseVisualStyleBackColor = true;
+			this->btnUWybierz->Click += gcnew System::EventHandler(this, &MyForm::btnUWybierz_Click);
+			// 
 			// tbUWlasciciel
 			// 
-			this->tbUWlasciciel->FormattingEnabled = true;
 			this->tbUWlasciciel->Location = System::Drawing::Point(106, 129);
 			this->tbUWlasciciel->Name = L"tbUWlasciciel";
-			this->tbUWlasciciel->Size = System::Drawing::Size(121, 21);
-			this->tbUWlasciciel->Sorted = true;
+			this->tbUWlasciciel->Size = System::Drawing::Size(121, 20);
 			this->tbUWlasciciel->TabIndex = 15;
 			// 
 			// cbUSerwisant
@@ -396,7 +444,7 @@ namespace Serwis {
 			// 
 			// btnUSzukaj
 			// 
-			this->btnUSzukaj->Location = System::Drawing::Point(104, 65);
+			this->btnUSzukaj->Location = System::Drawing::Point(117, 65);
 			this->btnUSzukaj->Name = L"btnUSzukaj";
 			this->btnUSzukaj->Size = System::Drawing::Size(75, 23);
 			this->btnUSzukaj->TabIndex = 2;
@@ -408,13 +456,13 @@ namespace Serwis {
 			// 
 			this->tbUSzukaj->Location = System::Drawing::Point(6, 39);
 			this->tbUSzukaj->Name = L"tbUSzukaj";
-			this->tbUSzukaj->Size = System::Drawing::Size(264, 20);
+			this->tbUSzukaj->Size = System::Drawing::Size(302, 20);
 			this->tbUSzukaj->TabIndex = 1;
 			// 
 			// btnUUsun
 			// 
 			this->btnUUsun->Enabled = false;
-			this->btnUUsun->Location = System::Drawing::Point(192, 465);
+			this->btnUUsun->Location = System::Drawing::Point(208, 462);
 			this->btnUUsun->Name = L"btnUUsun";
 			this->btnUUsun->Size = System::Drawing::Size(75, 23);
 			this->btnUUsun->TabIndex = 12;
@@ -425,7 +473,7 @@ namespace Serwis {
 			// btnUModyfikuj
 			// 
 			this->btnUModyfikuj->Enabled = false;
-			this->btnUModyfikuj->Location = System::Drawing::Point(101, 465);
+			this->btnUModyfikuj->Location = System::Drawing::Point(117, 462);
 			this->btnUModyfikuj->Name = L"btnUModyfikuj";
 			this->btnUModyfikuj->Size = System::Drawing::Size(75, 23);
 			this->btnUModyfikuj->TabIndex = 11;
@@ -435,7 +483,7 @@ namespace Serwis {
 			// 
 			// btnUDodaj
 			// 
-			this->btnUDodaj->Location = System::Drawing::Point(11, 465);
+			this->btnUDodaj->Location = System::Drawing::Point(27, 462);
 			this->btnUDodaj->Name = L"btnUDodaj";
 			this->btnUDodaj->Size = System::Drawing::Size(75, 23);
 			this->btnUDodaj->TabIndex = 10;
@@ -450,7 +498,7 @@ namespace Serwis {
 			this->groupBox2->Controls->Add(this->rbUNaprawa);
 			this->groupBox2->Location = System::Drawing::Point(6, 303);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(264, 55);
+			this->groupBox2->Size = System::Drawing::Size(302, 55);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Kategoria";
@@ -524,6 +572,7 @@ namespace Serwis {
 			// 
 			// groupBox5
 			// 
+			this->groupBox5->Controls->Add(this->btnPPrzypisz);
 			this->groupBox5->Controls->Add(this->groupBox6);
 			this->groupBox5->Controls->Add(this->groupBox7);
 			this->groupBox5->Controls->Add(this->btnPSzukaj);
@@ -531,19 +580,29 @@ namespace Serwis {
 			this->groupBox5->Controls->Add(this->btnPUsun);
 			this->groupBox5->Controls->Add(this->btnPModyfikuj);
 			this->groupBox5->Controls->Add(this->btnPDodaj);
-			this->groupBox5->Location = System::Drawing::Point(22, 6);
+			this->groupBox5->Location = System::Drawing::Point(7, 6);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(276, 497);
+			this->groupBox5->Size = System::Drawing::Size(315, 497);
 			this->groupBox5->TabIndex = 1;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Podmioty";
+			// 
+			// btnPPrzypisz
+			// 
+			this->btnPPrzypisz->Location = System::Drawing::Point(67, 451);
+			this->btnPPrzypisz->Name = L"btnPPrzypisz";
+			this->btnPPrzypisz->Size = System::Drawing::Size(173, 23);
+			this->btnPPrzypisz->TabIndex = 18;
+			this->btnPPrzypisz->Text = L"Przypisz podmiot do urz¹dzenia";
+			this->btnPPrzypisz->UseVisualStyleBackColor = true;
+			this->btnPPrzypisz->Click += gcnew System::EventHandler(this, &MyForm::btnPPrzypisz_Click);
 			// 
 			// groupBox6
 			// 
 			this->groupBox6->Controls->Add(this->rtbPOpis);
 			this->groupBox6->Location = System::Drawing::Point(6, 266);
 			this->groupBox6->Name = L"groupBox6";
-			this->groupBox6->Size = System::Drawing::Size(264, 87);
+			this->groupBox6->Size = System::Drawing::Size(303, 87);
 			this->groupBox6->TabIndex = 17;
 			this->groupBox6->TabStop = false;
 			this->groupBox6->Text = L"Opis";
@@ -552,7 +611,7 @@ namespace Serwis {
 			// 
 			this->rtbPOpis->Location = System::Drawing::Point(6, 19);
 			this->rtbPOpis->Name = L"rtbPOpis";
-			this->rtbPOpis->Size = System::Drawing::Size(252, 62);
+			this->rtbPOpis->Size = System::Drawing::Size(291, 62);
 			this->rtbPOpis->TabIndex = 16;
 			this->rtbPOpis->Text = L"";
 			// 
@@ -568,7 +627,7 @@ namespace Serwis {
 			this->groupBox7->Controls->Add(this->label9);
 			this->groupBox7->Location = System::Drawing::Point(6, 94);
 			this->groupBox7->Name = L"groupBox7";
-			this->groupBox7->Size = System::Drawing::Size(264, 166);
+			this->groupBox7->Size = System::Drawing::Size(303, 166);
 			this->groupBox7->TabIndex = 15;
 			this->groupBox7->TabStop = false;
 			this->groupBox7->Text = L"Dane podstawowe";
@@ -577,7 +636,7 @@ namespace Serwis {
 			// 
 			this->tbPKod->Location = System::Drawing::Point(85, 123);
 			this->tbPKod->Name = L"tbPKod";
-			this->tbPKod->Size = System::Drawing::Size(173, 20);
+			this->tbPKod->Size = System::Drawing::Size(212, 20);
 			this->tbPKod->TabIndex = 14;
 			// 
 			// label6
@@ -593,21 +652,21 @@ namespace Serwis {
 			// 
 			this->tbPMiasto->Location = System::Drawing::Point(85, 90);
 			this->tbPMiasto->Name = L"tbPMiasto";
-			this->tbPMiasto->Size = System::Drawing::Size(173, 20);
+			this->tbPMiasto->Size = System::Drawing::Size(212, 20);
 			this->tbPMiasto->TabIndex = 9;
 			// 
 			// tbPUlica
 			// 
 			this->tbPUlica->Location = System::Drawing::Point(85, 57);
 			this->tbPUlica->Name = L"tbPUlica";
-			this->tbPUlica->Size = System::Drawing::Size(173, 20);
+			this->tbPUlica->Size = System::Drawing::Size(212, 20);
 			this->tbPUlica->TabIndex = 8;
 			// 
 			// tbPNazwa
 			// 
 			this->tbPNazwa->Location = System::Drawing::Point(85, 23);
 			this->tbPNazwa->Name = L"tbPNazwa";
-			this->tbPNazwa->Size = System::Drawing::Size(173, 20);
+			this->tbPNazwa->Size = System::Drawing::Size(212, 20);
 			this->tbPNazwa->TabIndex = 7;
 			// 
 			// label7
@@ -639,7 +698,7 @@ namespace Serwis {
 			// 
 			// btnPSzukaj
 			// 
-			this->btnPSzukaj->Location = System::Drawing::Point(104, 65);
+			this->btnPSzukaj->Location = System::Drawing::Point(117, 65);
 			this->btnPSzukaj->Name = L"btnPSzukaj";
 			this->btnPSzukaj->Size = System::Drawing::Size(75, 23);
 			this->btnPSzukaj->TabIndex = 2;
@@ -651,13 +710,13 @@ namespace Serwis {
 			// 
 			this->tbPSzukaj->Location = System::Drawing::Point(6, 39);
 			this->tbPSzukaj->Name = L"tbPSzukaj";
-			this->tbPSzukaj->Size = System::Drawing::Size(264, 20);
+			this->tbPSzukaj->Size = System::Drawing::Size(303, 20);
 			this->tbPSzukaj->TabIndex = 1;
 			// 
 			// btnPUsun
 			// 
 			this->btnPUsun->Enabled = false;
-			this->btnPUsun->Location = System::Drawing::Point(192, 465);
+			this->btnPUsun->Location = System::Drawing::Point(209, 389);
 			this->btnPUsun->Name = L"btnPUsun";
 			this->btnPUsun->Size = System::Drawing::Size(75, 23);
 			this->btnPUsun->TabIndex = 12;
@@ -668,7 +727,7 @@ namespace Serwis {
 			// btnPModyfikuj
 			// 
 			this->btnPModyfikuj->Enabled = false;
-			this->btnPModyfikuj->Location = System::Drawing::Point(101, 465);
+			this->btnPModyfikuj->Location = System::Drawing::Point(118, 389);
 			this->btnPModyfikuj->Name = L"btnPModyfikuj";
 			this->btnPModyfikuj->Size = System::Drawing::Size(75, 23);
 			this->btnPModyfikuj->TabIndex = 11;
@@ -678,7 +737,7 @@ namespace Serwis {
 			// 
 			// btnPDodaj
 			// 
-			this->btnPDodaj->Location = System::Drawing::Point(11, 465);
+			this->btnPDodaj->Location = System::Drawing::Point(28, 389);
 			this->btnPDodaj->Name = L"btnPDodaj";
 			this->btnPDodaj->Size = System::Drawing::Size(75, 23);
 			this->btnPDodaj->TabIndex = 10;
@@ -688,6 +747,7 @@ namespace Serwis {
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->dgUstawienia);
 			this->tabPage1->Controls->Add(this->groupBox8);
 			this->tabPage1->ImageIndex = 0;
 			this->tabPage1->Location = System::Drawing::Point(4, 4);
@@ -698,96 +758,180 @@ namespace Serwis {
 			this->tabPage1->Text = L"Ustawienia";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// dgUstawienia
+			// 
+			this->dgUstawienia->AllowUserToAddRows = false;
+			this->dgUstawienia->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgUstawienia->Location = System::Drawing::Point(329, 7);
+			this->dgUstawienia->Name = L"dgUstawienia";
+			this->dgUstawienia->ReadOnly = true;
+			this->dgUstawienia->Size = System::Drawing::Size(851, 500);
+			this->dgUstawienia->TabIndex = 1;
+			this->dgUstawienia->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dgUstawienia_CellClick);
+			// 
 			// groupBox8
 			// 
-			this->groupBox8->Controls->Add(this->button1);
-			this->groupBox8->Controls->Add(this->button2);
-			this->groupBox8->Controls->Add(this->button3);
-			this->groupBox8->Controls->Add(this->textBox4);
+			this->groupBox8->Controls->Add(this->label16);
+			this->groupBox8->Controls->Add(this->tbUstImie);
+			this->groupBox8->Controls->Add(this->label15);
+			this->groupBox8->Controls->Add(this->tbUstNazwisko);
+			this->groupBox8->Controls->Add(this->label14);
+			this->groupBox8->Controls->Add(this->btnUstSzukaj);
+			this->groupBox8->Controls->Add(this->tbUstSzukaj);
+			this->groupBox8->Controls->Add(this->btnUstUsun);
+			this->groupBox8->Controls->Add(this->btnUstModyfikuj);
+			this->groupBox8->Controls->Add(this->btnUstDodaj);
+			this->groupBox8->Controls->Add(this->tbUstLogin);
 			this->groupBox8->Controls->Add(this->label13);
-			this->groupBox8->Controls->Add(this->textBox3);
-			this->groupBox8->Controls->Add(this->textBox2);
-			this->groupBox8->Controls->Add(this->textBox1);
+			this->groupBox8->Controls->Add(this->tbUstPowtorzH);
+			this->groupBox8->Controls->Add(this->tbUstNoweH);
+			this->groupBox8->Controls->Add(this->tbUstStareH);
 			this->groupBox8->Controls->Add(this->label12);
 			this->groupBox8->Controls->Add(this->label11);
 			this->groupBox8->Controls->Add(this->label10);
-			this->groupBox8->Location = System::Drawing::Point(23, 7);
+			this->groupBox8->Location = System::Drawing::Point(7, 6);
 			this->groupBox8->Name = L"groupBox8";
-			this->groupBox8->Size = System::Drawing::Size(286, 199);
+			this->groupBox8->Size = System::Drawing::Size(316, 500);
 			this->groupBox8->TabIndex = 0;
 			this->groupBox8->TabStop = false;
-			this->groupBox8->Text = L"Zmiana danych logowania";
+			this->groupBox8->Text = L"Edycja danych u¿ytkownika";
 			// 
-			// button1
+			// label16
 			// 
-			this->button1->Enabled = false;
-			this->button1->Location = System::Drawing::Point(196, 158);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 15;
-			this->button1->Text = L"usuñ";
-			this->button1->UseVisualStyleBackColor = true;
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(6, 289);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(0, 13);
+			this->label16->TabIndex = 23;
 			// 
-			// button2
+			// tbUstImie
 			// 
-			this->button2->Enabled = false;
-			this->button2->Location = System::Drawing::Point(105, 158);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 14;
-			this->button2->Text = L"modyfikuj";
-			this->button2->UseVisualStyleBackColor = true;
+			this->tbUstImie->Location = System::Drawing::Point(97, 119);
+			this->tbUstImie->Name = L"tbUstImie";
+			this->tbUstImie->Size = System::Drawing::Size(100, 20);
+			this->tbUstImie->TabIndex = 21;
 			// 
-			// button3
+			// label15
 			// 
-			this->button3->Location = System::Drawing::Point(15, 158);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 13;
-			this->button3->Text = L"dodaj";
-			this->button3->UseVisualStyleBackColor = true;
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(6, 122);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(29, 13);
+			this->label15->TabIndex = 20;
+			this->label15->Text = L"Imiê:";
 			// 
-			// textBox4
+			// tbUstNazwisko
 			// 
-			this->textBox4->Location = System::Drawing::Point(97, 108);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(100, 20);
-			this->textBox4->TabIndex = 7;
+			this->tbUstNazwisko->Location = System::Drawing::Point(97, 145);
+			this->tbUstNazwisko->Name = L"tbUstNazwisko";
+			this->tbUstNazwisko->Size = System::Drawing::Size(100, 20);
+			this->tbUstNazwisko->TabIndex = 19;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(6, 148);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(56, 13);
+			this->label14->TabIndex = 18;
+			this->label14->Text = L"Nazwisko:";
+			// 
+			// btnUstSzukaj
+			// 
+			this->btnUstSzukaj->Location = System::Drawing::Point(117, 65);
+			this->btnUstSzukaj->Name = L"btnUstSzukaj";
+			this->btnUstSzukaj->Size = System::Drawing::Size(75, 23);
+			this->btnUstSzukaj->TabIndex = 17;
+			this->btnUstSzukaj->Text = L"Szukaj";
+			this->btnUstSzukaj->UseVisualStyleBackColor = true;
+			this->btnUstSzukaj->Click += gcnew System::EventHandler(this, &MyForm::btnUstSzukaj_Click);
+			// 
+			// tbUstSzukaj
+			// 
+			this->tbUstSzukaj->Location = System::Drawing::Point(6, 39);
+			this->tbUstSzukaj->Name = L"tbUstSzukaj";
+			this->tbUstSzukaj->Size = System::Drawing::Size(303, 20);
+			this->tbUstSzukaj->TabIndex = 16;
+			// 
+			// btnUstUsun
+			// 
+			this->btnUstUsun->Enabled = false;
+			this->btnUstUsun->Location = System::Drawing::Point(208, 289);
+			this->btnUstUsun->Name = L"btnUstUsun";
+			this->btnUstUsun->Size = System::Drawing::Size(75, 23);
+			this->btnUstUsun->TabIndex = 15;
+			this->btnUstUsun->Text = L"usuñ";
+			this->btnUstUsun->UseVisualStyleBackColor = true;
+			this->btnUstUsun->Click += gcnew System::EventHandler(this, &MyForm::btnUstUsun_Click);
+			// 
+			// btnUstModyfikuj
+			// 
+			this->btnUstModyfikuj->Enabled = false;
+			this->btnUstModyfikuj->Location = System::Drawing::Point(117, 289);
+			this->btnUstModyfikuj->Name = L"btnUstModyfikuj";
+			this->btnUstModyfikuj->Size = System::Drawing::Size(75, 23);
+			this->btnUstModyfikuj->TabIndex = 14;
+			this->btnUstModyfikuj->Text = L"zmieñ has³o";
+			this->btnUstModyfikuj->UseVisualStyleBackColor = true;
+			this->btnUstModyfikuj->Click += gcnew System::EventHandler(this, &MyForm::btnUstModyfikuj_Click);
+			// 
+			// btnUstDodaj
+			// 
+			this->btnUstDodaj->Location = System::Drawing::Point(27, 289);
+			this->btnUstDodaj->Name = L"btnUstDodaj";
+			this->btnUstDodaj->Size = System::Drawing::Size(75, 23);
+			this->btnUstDodaj->TabIndex = 13;
+			this->btnUstDodaj->Text = L"dodaj";
+			this->btnUstDodaj->UseVisualStyleBackColor = true;
+			this->btnUstDodaj->Click += gcnew System::EventHandler(this, &MyForm::btnUstDodaj_Click);
+			// 
+			// tbUstLogin
+			// 
+			this->tbUstLogin->Location = System::Drawing::Point(97, 171);
+			this->tbUstLogin->Name = L"tbUstLogin";
+			this->tbUstLogin->Size = System::Drawing::Size(100, 20);
+			this->tbUstLogin->TabIndex = 7;
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(6, 111);
+			this->label13->Location = System::Drawing::Point(6, 174);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(62, 13);
+			this->label13->Size = System::Drawing::Size(36, 13);
 			this->label13->TabIndex = 6;
-			this->label13->Text = L"Nowy login:";
+			this->label13->Text = L"Login:";
 			// 
-			// textBox3
+			// tbUstPowtorzH
 			// 
-			this->textBox3->Location = System::Drawing::Point(97, 82);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 20);
-			this->textBox3->TabIndex = 5;
+			this->tbUstPowtorzH->Location = System::Drawing::Point(97, 250);
+			this->tbUstPowtorzH->Name = L"tbUstPowtorzH";
+			this->tbUstPowtorzH->PasswordChar = '*';
+			this->tbUstPowtorzH->Size = System::Drawing::Size(100, 20);
+			this->tbUstPowtorzH->TabIndex = 5;
+			this->tbUstPowtorzH->TextChanged += gcnew System::EventHandler(this, &MyForm::tbUstPowtorzH_TextChanged);
 			// 
-			// textBox2
+			// tbUstNoweH
 			// 
-			this->textBox2->Location = System::Drawing::Point(97, 56);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 20);
-			this->textBox2->TabIndex = 4;
+			this->tbUstNoweH->Location = System::Drawing::Point(97, 224);
+			this->tbUstNoweH->Name = L"tbUstNoweH";
+			this->tbUstNoweH->PasswordChar = '*';
+			this->tbUstNoweH->Size = System::Drawing::Size(100, 20);
+			this->tbUstNoweH->TabIndex = 4;
+			this->tbUstNoweH->TextChanged += gcnew System::EventHandler(this, &MyForm::tbUstNoweH_TextChanged);
 			// 
-			// textBox1
+			// tbUstStareH
 			// 
-			this->textBox1->Location = System::Drawing::Point(97, 30);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 3;
+			this->tbUstStareH->Location = System::Drawing::Point(97, 198);
+			this->tbUstStareH->Name = L"tbUstStareH";
+			this->tbUstStareH->PasswordChar = '*';
+			this->tbUstStareH->Size = System::Drawing::Size(100, 20);
+			this->tbUstStareH->TabIndex = 3;
+			this->tbUstStareH->TextChanged += gcnew System::EventHandler(this, &MyForm::tbUstStareH_TextChanged);
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(6, 85);
+			this->label12->Location = System::Drawing::Point(6, 253);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(78, 13);
 			this->label12->TabIndex = 2;
@@ -796,7 +940,7 @@ namespace Serwis {
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(6, 59);
+			this->label11->Location = System::Drawing::Point(6, 227);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(68, 13);
 			this->label11->TabIndex = 1;
@@ -805,21 +949,11 @@ namespace Serwis {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(6, 33);
+			this->label10->Location = System::Drawing::Point(6, 201);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(65, 13);
+			this->label10->Size = System::Drawing::Size(39, 13);
 			this->label10->TabIndex = 0;
-			this->label10->Text = L"Stare has³o:";
-			// 
-			// tabPage5
-			// 
-			this->tabPage5->ImageIndex = 4;
-			this->tabPage5->Location = System::Drawing::Point(4, 4);
-			this->tabPage5->Name = L"tabPage5";
-			this->tabPage5->Size = System::Drawing::Size(1190, 520);
-			this->tabPage5->TabIndex = 4;
-			this->tabPage5->Text = L"Wyloguj";
-			this->tabPage5->UseVisualStyleBackColor = true;
+			this->label10->Text = L"Has³o:";
 			// 
 			// tabPage4
 			// 
@@ -870,6 +1004,7 @@ namespace Serwis {
 			this->groupBox7->ResumeLayout(false);
 			this->groupBox7->PerformLayout();
 			this->tabPage1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUstawienia))->EndInit();
 			this->groupBox8->ResumeLayout(false);
 			this->groupBox8->PerformLayout();
 			this->ResumeLayout(false);
@@ -879,6 +1014,7 @@ namespace Serwis {
 		//deklaracja zmiennych
 		int id_rekordu; //wybranie rekordu na ktorym pracuje - zmienna dla wszystkich siatek
 		String^ kategoria="";
+		String^ nazwa_podmiotu="";
 		// koniec deklaracji zmiennych
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
@@ -899,7 +1035,7 @@ namespace Serwis {
 						  }
 			 }
 
-private: Void wczytanie_podmiotow(){
+/*private: Void wczytanie_podmiotow(){
 			  MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
 			  MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT nazwa FROM podmiot ORDER BY nazwa;", laczBaze);
 			  
@@ -922,7 +1058,7 @@ private: Void wczytanie_podmiotow(){
 
 			  
 			  
-		  }
+		  }*/
 
 private: Void pokaz_siatke(){
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
@@ -944,6 +1080,25 @@ private: Void pokaz_siatke(){
 			 }
 }
 
+private: Void pokaz_siatke_uzytkownicy(){
+			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.uzytkownik ORDER BY imie;", laczBaze);
+
+			 try {
+				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs pomiedzy baza a danumi
+				 moja->SelectCommand = zapytanie;
+				 DataTable^ tabela = gcnew DataTable(); //tworzymy tabele
+				 moja->Fill(tabela); // wypelniamy tabele
+
+				 BindingSource^ zrodlo = gcnew BindingSource(); //podlaczamy zrodlo danych
+				 zrodlo->DataSource = tabela; //jako zrodlo danych ustawiamy tabele
+				 dgUstawienia->DataSource = zrodlo; // w nasza siatke wczytujemy tabele z danymi
+				 laczBaze->Close(); //zamykanie polaczenia z baza
+			 }
+			 catch (Exception^ komunikat){
+				 MessageBox::Show(komunikat->Message);
+			 }
+}
 
 private: System::Void btnUSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
@@ -959,7 +1114,7 @@ private: System::Void btnUSzukaj_Click(System::Object^  sender, System::EventArg
 				 zrodlo->DataSource = tabela;
 				 dgUrzadzenia->DataSource = zrodlo;
 				 laczBaze->Close();
-				 wczytanie_podmiotow();
+				 
 			 }
 			 catch (Exception^ komunikat){
 				 MessageBox::Show(komunikat->Message);
@@ -989,7 +1144,6 @@ private: System::Void dgUrzadzenia_CellClick(System::Object^  sender, System::Wi
 
 				btnUModyfikuj->Enabled = true;
 				btnUUsun->Enabled = true;
-
 
 			 }
 
@@ -1038,6 +1192,7 @@ private: System::Void tabControl1_MouseClick(System::Object^  sender, System::Wi
 			 if (tabControl1->SelectedTab->TabIndex == 3) this->Close();
 
 
+
 			 //if (tabControl1->SelectedTab->TabIndex == 4){
 				 
 			 //}
@@ -1077,6 +1232,7 @@ private: System::Void btnUUsun_Click(System::Object^  sender, System::EventArgs^
 			 pokaz_siatke(); //Refresh tabeli
 
 }
+		 
 private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if (tbUNazwa->Text->Length < 3 || tbUSeryjny->Text->Length < 3 || tbUWlasciciel->Text->Length < 3 || cbUTyp->Text->Length < 3 || cbUSerwisant->Text->Length < 3){
 				 MessageBox::Show("Uzupe³nij brakuj¹ce dane !");
@@ -1086,12 +1242,17 @@ private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::Event
 				 MySqlCommand^ polecenie = laczBaze->CreateCommand();
 				 MySqlTransaction^ transakcja;
 				 laczBaze->Open();
+
 				 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);  //odczyt zatwierdzonych danych
 				 polecenie->Connection = laczBaze;
 				 polecenie->Transaction = transakcja;
 
+				 if (rbUNaprawa->Checked == true) kategoria = "naprawa";
+				 if (rbUPrzeglad->Checked == true) kategoria = "przegl¹d";
+				 if (rbUusluga->Checked == true) kategoria = "us³uga";
+
 				 try{
-					 polecenie->CommandText = "UPDATE urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' WHERE urzadzenie_id="+id_rekordu+" ";
+					 polecenie->CommandText = "UPDATE urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='"+ tbUWlasciciel->Text +"',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' WHERE urzadzenie_id="+id_rekordu+" ";
 					 polecenie->ExecuteNonQuery(); 
 					 transakcja->Commit(); // rozpoczecie transakcji mysql
 				 }
@@ -1135,6 +1296,7 @@ private: System::Void dgPodmioty_CellClick(System::Object^  sender, System::Wind
 				 btnPModyfikuj->Enabled = true;
 				 btnPUsun->Enabled = true;
 
+				 nazwa_podmiotu = tbPNazwa->Text;
 
 			 }
 }
@@ -1189,7 +1351,7 @@ private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs
 					 transakcja->Rollback();
 				 }
 				 laczBaze->Close();
-				 wczytanie_podmiotow(); // Dodawanie nazwy podmiotu do listy podmiotów
+				 
 			 }
 			 pokaz_podmiot();
 			
@@ -1209,6 +1371,8 @@ private: System::Void btnPModyfikuj_Click(System::Object^  sender, System::Event
 				 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);  //odczyt zatwierdzonych danych
 				 polecenie->Connection = laczBaze;
 				 polecenie->Transaction = transakcja;
+
+				 
 
 				 try{
 					 polecenie->CommandText = "UPDATE podmiot SET nazwa='" + tbPNazwa->Text + "', miasto='" + tbPMiasto->Text + "', ulica='" + tbPUlica->Text + "',kod_pocztowy='" + tbPKod->Text + "', opis='" + rtbPOpis->Text + "' WHERE podmiot_id='" + id_rekordu + "' ";
@@ -1248,9 +1412,162 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 				 transakcja->Rollback(); //cofanie transakcji
 			 }
 			 laczBaze->Close();
-			 wczytanie_podmiotow(); //Usuwanie nazwy podmiotu z listy podmiotów
+			 
 			 wyczysc(groupBox5); //czyszczenie zawartosci pol 
 			 pokaz_podmiot(); //Refresh tabeli
+}
+private: System::Void btnUWybierz_Click(System::Object^  sender, System::EventArgs^  e) {
+			 tabControl1->SelectedTab = tabPage3;
+			 pokaz_podmiot();
+}
+
+private: System::Void btnPPrzypisz_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //tbUWlasciciel->Text = String::Empty;
+				tbUWlasciciel->Text = tbPNazwa->Text;
+
+			 tabControl1->SelectedTab = tabPage2;
+			 //MessageBox::Show("Poprawnie przypisano podmiot do urz¹dzenia.", "Ostrze¿enie", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+private: System::Void btnUstSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.uzytkownik WHERE CONCAT(login, imie,' ',nazwisko) LIKE '%" + tbUstSzukaj->Text + "%' ORDER BY login;", laczBaze);
+
+			 try{
+				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
+				 moja->SelectCommand = zapytanie;
+				 DataTable^tabela = gcnew DataTable();
+				 moja->Fill(tabela);
+
+				 BindingSource^ zrodlo = gcnew BindingSource(); // podlaczamy zrodlo
+				 zrodlo->DataSource = tabela;
+				 dgUstawienia->DataSource = zrodlo;
+				 laczBaze->Close();
+			 }
+			 catch (Exception^ komunikat){
+				 MessageBox::Show(komunikat->Message);
+			 }
+			 dgUstawienia->Columns[0]->Visible = false; // uktywamy uzytkownik id
+			 dgUstawienia->Columns[4]->Visible = false;
+			 
+
+}
+	
+private: System::Void dgUstawienia_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+			 if (e->RowIndex >= 0){
+				 id_rekordu = Convert::ToInt32(dgUstawienia->Rows[e->RowIndex]->Cells["uzytkownik_id"]->Value);
+				 tbUstImie->Text = dgUstawienia->Rows[e->RowIndex]->Cells["imie"]->Value->ToString();
+				 tbUstNazwisko->Text = dgUstawienia->Rows[e->RowIndex]->Cells["nazwisko"]->Value->ToString();
+				 tbUstLogin->Text = dgUstawienia->Rows[e->RowIndex]->Cells["login"]->Value->ToString();
+				 
+
+				 btnUstModyfikuj->Enabled = true;
+				 btnUstUsun->Enabled = true;
+
+			 }
+}
+		 private: Void modyfikuj_pokaz(){
+					  if ((tbUstStareH->Text != "") && (tbUstNoweH->Text != "") && (tbUstNoweH->Text == tbUstPowtorzH->Text)){
+						  btnUstModyfikuj->Enabled = true;
+					  }
+					  else{
+						  btnUstModyfikuj->Enabled = false;
+					  }
+		 }
+private: System::Void btnUstModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
+			 // zamiana hasla
+			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("UPDATE uzytkownik SET haslo = PASSWORD('" + tbUstNoweH->Text + "') WHERE uzytkownik_id = " + id_rekordu + " AND haslo = PASSWORD('" + tbUstStareH->Text + "');", laczBaze);
+			 try {
+				 laczBaze->Open();
+				 if (zapytanie->ExecuteNonQuery()){
+					 MessageBox::Show("Zmiana has³a zakoñczona pomyœlnie");
+				 }
+				 else{
+					 MessageBox::Show("Podanie has³o jest niepoprawne");
+				 }
+				 laczBaze->Close(); //zawsze zamykamy baze
+			 }
+			 catch (Exception^ komunikat){
+				 MessageBox::Show(komunikat->Message);
+			 }
+
+}
+private: System::Void tbUstNoweH_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			 modyfikuj_pokaz();
+}
+private: System::Void tbUstPowtorzH_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			 modyfikuj_pokaz();
+}
+private: System::Void tbUstStareH_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+			 modyfikuj_pokaz();
+}
+private: System::Void btnUstDodaj_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //dodawanie uzytkownikow do bazy
+			 if (tbUstImie->Text->Length < 3 || tbUstNazwisko->Text->Length < 3 || tbUstLogin->Text->Length <= 4 || tbUstStareH->Text->Length <= 3){
+				 MessageBox::Show("Uzupe³nij dane !");
+			 }
+			 else{
+				 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				 MySqlCommand^ polecenie = laczBaze->CreateCommand();
+				 MySqlTransaction^ transakcja;
+				 laczBaze->Open();
+				 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+				 polecenie->Connection = laczBaze;
+
+				 polecenie->Transaction = transakcja;
+
+				 try{
+					 polecenie->CommandText = "INSERT INTO uzytkownik SET imie='" + tbUstImie->Text + "', nazwisko='" + tbUstNazwisko->Text + "', login='" + tbUstLogin->Text + "', haslo=PASSWORD('" + tbUstStareH->Text + "');";
+					 polecenie->ExecuteNonQuery();
+
+					 MessageBox::Show("U¿ytkownik zosta³ dodany do bazy danych.");
+					 transakcja->Commit();
+
+				 }
+				 catch (Exception^ komunikat){
+					 MessageBox::Show(komunikat->Message);
+					 transakcja->Rollback();
+				 }
+				 laczBaze->Close();
+
+			 }
+			 pokaz_siatke_uzytkownicy();
+
+}
+private: System::Void btnUstUsun_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (id_rekordu == 1){
+				 MessageBox::Show("Nie mo¿na usun¹æ administratora!");
+			 }
+			 else{
+				 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				 MySqlCommand^ polecenie = laczBaze->CreateCommand();
+				 MySqlTransaction^ transakcja;
+				 laczBaze->Open();
+				 transakcja = laczBaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+				 polecenie->Connection = laczBaze;
+
+				 polecenie->Transaction = transakcja;
+
+				 try{
+					 if (MessageBox::Show("Czy na pewno chcesz usun¹æ wybranego u¿ytkownika?", "UWAGA!!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
+						 polecenie->CommandText = "DELETE  FROM uzytkownik WHERE uzytkownik_id=" + id_rekordu + ";";
+						 polecenie->ExecuteNonQuery();  // najpierw usuwamy z godziny bo to jest pochodna tabeli uzytkownik wiec na odwrot sie nie da
+						 transakcja->Commit(); // rozpoczecie transakcji mysql
+						 MessageBox::Show("U¿ytkownik zosta³ usuniêty");
+					 }
+				 }
+				 catch (Exception^ komunikat){
+					 MessageBox::Show(komunikat->Message);
+					 transakcja->Rollback(); //cofanie transakcji
+				 }
+				 laczBaze->Close();
+			 }
+			 wyczysc(groupBox8);
+			 pokaz_siatke_uzytkownicy();
+
 }
 };
 }
