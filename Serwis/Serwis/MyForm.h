@@ -87,6 +87,7 @@ namespace Serwis {
 
 
 
+
 	public:
 		String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=NU=zupsko33;database=serwis"; //L oznacza rozszerzony zapis
 		MyForm(int uzytkownik)
@@ -95,6 +96,7 @@ namespace Serwis {
 			toolTip1->SetToolTip(lblZalogowano, "Tylko administrator mo¿e dodawaæ i usuwaæ u¿ytkowników.");
 			id_uzytkownika = uzytkownik;
 			wczytanie_serwisantow();
+			
 			if (id_uzytkownika == 1) {
 				lblZalogowano->Text = "administrator";
 				btnUstDodaj->Enabled = true;
@@ -772,7 +774,7 @@ namespace Serwis {
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 			this->tabPage1->Size = System::Drawing::Size(1190, 520);
 			this->tabPage1->TabIndex = 0;
-			this->tabPage1->Text = L"U¿ytkownicy";
+			this->tabPage1->Text = L"Serwisanci";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
 			// dgUstawienia
@@ -1174,7 +1176,6 @@ private: System::Void dgUrzadzenia_CellClick(System::Object^  sender, System::Wi
 				 cbUSerwisant->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["serwisant"]->Value->ToString();
 				 rtbUOpis->Text = dgUrzadzenia->Rows[e->RowIndex]->Cells["opis"]->Value->ToString();
 				 
-				 
 				 kategoria = dgUrzadzenia->Rows[e->RowIndex]->Cells["kategoria"]->Value->ToString();
 
 				 if (kategoria == "naprawa") rbUNaprawa->Checked = true;
@@ -1223,7 +1224,10 @@ private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs
 					 transakcja->Rollback();
 				 }
 				 laczBaze->Close();
+
 			 }
+			 wyczysc(groupBox3);
+			 wyczysc(groupBox4);
 			 pokaz_siatke();
 }
 private: System::Void tabControl1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
@@ -1266,8 +1270,9 @@ private: System::Void btnUUsun_Click(System::Object^  sender, System::EventArgs^
 				 transakcja->Rollback(); //cofanie transakcji
 			 }
 			 laczBaze->Close();
-			 wyczysc(groupBox3); //czyszczenie zawartosci pol 
-			 wyczysc(groupBox4);
+			 wyczysc(groupBox3);
+			 wyczysc(groupBox4); //czyszczenie zawartosci pol 
+			 
 			 pokaz_siatke(); //Refresh tabeli
 
 }
@@ -1301,7 +1306,7 @@ private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::Event
 				 }
 				 laczBaze->Close();
 			 }
-			 pokaz_siatke();
+			pokaz_siatke();
 }
 private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
@@ -1390,7 +1395,8 @@ private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs
 					 transakcja->Rollback();
 				 }
 				 laczBaze->Close();
-				 
+				 wyczysc(groupBox6);
+				 wyczysc(groupBox7);
 			 }
 			 pokaz_podmiot();
 			
@@ -1452,7 +1458,9 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 			 }
 			 laczBaze->Close();
 			 
-			 wyczysc(groupBox5); //czyszczenie zawartosci pol 
+			 wyczysc(groupBox6);
+			 wyczysc(groupBox7); //czyszczenie zawartosci pol 
+			 
 			 pokaz_podmiot(); //Refresh tabeli
 }
 private: System::Void btnUWybierz_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1461,12 +1469,15 @@ private: System::Void btnUWybierz_Click(System::Object^  sender, System::EventAr
 }
 
 private: System::Void btnPPrzypisz_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-				tbUWlasciciel->Text = tbPNazwa->Text;
-				tabControl1->SelectedTab = tabPage2;
-			 //MessageBox::Show("Poprawnie przypisano podmiot do urz¹dzenia.", "Ostrze¿enie", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			 try{
+				 tbUWlasciciel->Text = tbPNazwa->Text;
+				 tabControl1->SelectedTab = tabPage2;
+			 }
+			 catch (Exception^ komunikat){
+				 MessageBox::Show(komunikat->Message);
+				 //MessageBox::Show("Poprawnie przypisano podmiot do urz¹dzenia.", "Ostrze¿enie", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			 }
 }
-
 private: System::Void btnUstSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
 			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.uzytkownik WHERE CONCAT(login, imie,' ',nazwisko) LIKE '%" + tbUstSzukaj->Text + "%' ORDER BY login;", laczBaze);
