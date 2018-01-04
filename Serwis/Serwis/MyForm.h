@@ -89,7 +89,7 @@ namespace Serwis {
 
 
 	public:
-		String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=NU=zupsko33;database=serwis"; //L oznacza rozszerzony zapis
+		String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=password;database=serwis"; //L oznacza rozszerzony zapis
 		MyForm(int uzytkownik)
 		{
 			InitializeComponent();
@@ -374,6 +374,7 @@ namespace Serwis {
 			// 
 			// tbUWlasciciel
 			// 
+			this->tbUWlasciciel->Enabled = false;
 			this->tbUWlasciciel->Location = System::Drawing::Point(106, 129);
 			this->tbUWlasciciel->Name = L"tbUWlasciciel";
 			this->tbUWlasciciel->Size = System::Drawing::Size(121, 20);
@@ -1025,6 +1026,7 @@ namespace Serwis {
 			this->Controls->Add(this->lblZalogowano);
 			this->Controls->Add(this->label17);
 			this->Controls->Add(this->tabControl1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"Aplikacja serwisowa";
@@ -1498,8 +1500,7 @@ private: System::Void btnUstSzukaj_Click(System::Object^  sender, System::EventA
 			 }
 			 dgUstawienia->Columns[0]->Visible = false; // uktywamy uzytkownik id
 			 dgUstawienia->Columns[4]->Visible = false;
-			 
-
+			
 }
 	
 private: System::Void dgUstawienia_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
