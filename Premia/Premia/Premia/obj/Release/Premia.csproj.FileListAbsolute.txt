@@ -1,0 +1,12 @@
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\Premia.exe.config
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\Premia.exe
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\Premia.pdb
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\itextsharp.dll
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\MySql.Data.DLL
+E:\C++ obiektowe\Premia\Premia\Premia\bin\Release\itextsharp.xml
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.Form1.resources
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.Properties.Resources.resources
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.csproj.GenerateResource.Cache
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.csproj.CoreCompileInputs.cache
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.exe
+E:\C++ obiektowe\Premia\Premia\Premia\obj\Release\Premia.pdb
