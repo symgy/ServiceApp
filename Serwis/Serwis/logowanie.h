@@ -200,9 +200,9 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-			 String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=password;database=serwis"; //L oznacza rozszerzony zapis
-			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM serwis.uzytkownik WHERE login = '" + tbLogin -> Text + "' AND haslo=PASSWORD('" + tbHaslo ->Text + "');", laczBaze);
+				String^ konfiguracja = L"datasource=mn26.webd.pl; port=3306; username=symygy_serwis; password=Pass1234; database=symygy_service"; //hosting			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
+				MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM symygy_service.uzytkownik WHERE login = '" + tbLogin -> Text + "' AND haslo=PASSWORD('" + tbHaslo ->Text + "');", laczBaze);
 			
 
 			 MySqlDataReader^ odczytanie;

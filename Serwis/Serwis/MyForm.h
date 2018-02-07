@@ -89,7 +89,8 @@ namespace Serwis {
 
 
 	public:
-		String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=password;database=serwis"; //L oznacza rozszerzony zapis
+		//String^ konfiguracja = L"datasource=localhost; port=3306; username=root;password=password;database=serwis"; lokalny serwer
+		String^ konfiguracja = L"datasource=mn26.webd.pl; port=3306; username=symygy_serwis; password=Pass1234; database=symygy_service"; //hosting
 		MyForm(int uzytkownik)
 		{
 			InitializeComponent();
@@ -1080,10 +1081,10 @@ namespace Serwis {
 
 						  }
 			 }
-
+		  // symygy_service.
 private: Void wczytanie_serwisantow(){
 			  MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			  MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT CONCAT(imie, ' ' ,nazwisko) AS imie_nazwisko FROM uzytkownik;", laczBaze); // laczymy dane dwoch kolumn w jedna o nazwie: imie_nazwisko
+			  MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT CONCAT(imie, ' ' ,nazwisko) AS imie_nazwisko FROM symygy_service.uzytkownik;", laczBaze); // laczymy dane dwoch kolumn w jedna o nazwie: imie_nazwisko
 			  
 			  // Wczytywanie do combo boxa Urzadzenia:Wlasciel zapisanych nazw podmiotow
 			  MySqlDataReader^ dane;
@@ -1105,7 +1106,7 @@ private: Void wczytanie_serwisantow(){
 
 private: Void pokaz_siatke(){
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.urzadzenie ORDER BY nazwa;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.urzadzenie ORDER BY nazwa;", laczBaze);
 
 			 try {
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs pomiedzy baza a danumi
@@ -1125,7 +1126,7 @@ private: Void pokaz_siatke(){
 
 private: Void pokaz_siatke_uzytkownicy(){
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.uzytkownik ORDER BY imie;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.uzytkownik ORDER BY imie;", laczBaze);
 
 			 try {
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs pomiedzy baza a danumi
@@ -1145,7 +1146,7 @@ private: Void pokaz_siatke_uzytkownicy(){
 
 private: System::Void btnUSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.urzadzenie WHERE CONCAT(nazwa, ' ', nr_seryjny, wlasciciel, kategoria, serwisant) LIKE '%" + tbUSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.urzadzenie WHERE CONCAT(nazwa, ' ', nr_seryjny, wlasciciel, kategoria, serwisant) LIKE '%" + tbUSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
 
 			 try{
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
@@ -1216,7 +1217,7 @@ private: System::Void btnUDodaj_Click(System::Object^  sender, System::EventArgs
 				 if (rbUusluga->Checked == true) kategoria = "us³uga";
 
 				 try{
-					 polecenie->CommandText = "INSERT INTO urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' ";
+					 polecenie->CommandText = "INSERT INTO symygy_service.urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='" + tbUWlasciciel->Text + "',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' ";
 					 polecenie->ExecuteNonQuery();
 					 transakcja->Commit();
 				 }
@@ -1260,7 +1261,7 @@ private: System::Void btnUUsun_Click(System::Object^  sender, System::EventArgs^
 			 try{
 				 if (MessageBox::Show("Czy na pewno chcesz usun¹æ wybrane urz¹dzenie?", "UWAGA!!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
 
-					 polecenie->CommandText = "DELETE  FROM urzadzenie WHERE urzadzenie_id=" + id_rekordu + ";";
+					 polecenie->CommandText = "DELETE  FROM symygy_service.urzadzenie WHERE urzadzenie_id=" + id_rekordu + ";";
 					 polecenie->ExecuteNonQuery();
 
 					 transakcja->Commit(); // rozpoczecie transakcji mysql
@@ -1298,7 +1299,7 @@ private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::Event
 				 if (rbUusluga->Checked == true) kategoria = "us³uga";
 
 				 try{
-					 polecenie->CommandText = "UPDATE urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='"+ tbUWlasciciel->Text +"',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' WHERE urzadzenie_id="+id_rekordu+" ";
+					 polecenie->CommandText = "UPDATE symygy_service.urzadzenie SET nazwa='" + tbUNazwa->Text + "', nr_seryjny='" + tbUSeryjny->Text + "', wlasciciel='"+ tbUWlasciciel->Text +"',typ='" + cbUTyp->Text + "',serwisant='" + cbUSerwisant->Text + "', kategoria='" + kategoria + "', opis='"+rtbUOpis->Text+"' WHERE urzadzenie_id="+id_rekordu+" ";
 					 polecenie->ExecuteNonQuery(); 
 					 transakcja->Commit(); // rozpoczecie transakcji mysql
 				 }
@@ -1312,7 +1313,7 @@ private: System::Void btnUModyfikuj_Click(System::Object^  sender, System::Event
 }
 private: System::Void btnPSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.podmiot WHERE CONCAT(nazwa, ' ', miasto, ulica) LIKE '%" +tbPSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.podmiot WHERE CONCAT(nazwa, ' ', miasto, ulica) LIKE '%" +tbPSzukaj->Text + "%' ORDER BY nazwa;", laczBaze);
 
 			 try{
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
@@ -1348,7 +1349,7 @@ private: System::Void dgPodmioty_CellClick(System::Object^  sender, System::Wind
 }
 		 private: void pokaz_podmiot(){
 					  MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
-					  MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.podmiot ORDER BY nazwa;", laczBaze);
+					  MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.podmiot ORDER BY nazwa;", laczBaze);
 
 					  try{
 						  MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
@@ -1386,7 +1387,7 @@ private: System::Void btnPDodaj_Click(System::Object^  sender, System::EventArgs
 				 polecenie->Transaction = transakcja;
 
 				 try{
-					 polecenie->CommandText = "INSERT INTO podmiot SET nazwa='" + tbPNazwa->Text + "', miasto='" + tbPMiasto->Text + "', ulica='" + tbPUlica->Text + "',kod_pocztowy='" + tbPKod->Text + "', opis='" + rtbPOpis->Text + "' ";
+					 polecenie->CommandText = "INSERT INTO symygy_service.podmiot SET nazwa='" + tbPNazwa->Text + "', miasto='" + tbPMiasto->Text + "', ulica='" + tbPUlica->Text + "',kod_pocztowy='" + tbPKod->Text + "', opis='" + rtbPOpis->Text + "' ";
 					 polecenie->ExecuteNonQuery();
 
 					 transakcja->Commit();
@@ -1422,7 +1423,7 @@ private: System::Void btnPModyfikuj_Click(System::Object^  sender, System::Event
 				 
 
 				 try{
-					 polecenie->CommandText = "UPDATE podmiot SET nazwa='" + tbPNazwa->Text + "', miasto='" + tbPMiasto->Text + "', ulica='" + tbPUlica->Text + "',kod_pocztowy='" + tbPKod->Text + "', opis='" + rtbPOpis->Text + "' WHERE podmiot_id='" + id_rekordu + "' ";
+					 polecenie->CommandText = "UPDATE symygy_service.podmiot SET nazwa='" + tbPNazwa->Text + "', miasto='" + tbPMiasto->Text + "', ulica='" + tbPUlica->Text + "',kod_pocztowy='" + tbPKod->Text + "', opis='" + rtbPOpis->Text + "' WHERE podmiot_id='" + id_rekordu + "' ";
 					 polecenie->ExecuteNonQuery();
 					 transakcja->Commit(); // rozpoczecie transakcji mysql
 				 }
@@ -1447,7 +1448,7 @@ private: System::Void btnPUsun_Click(System::Object^  sender, System::EventArgs^
 			 try{
 				 if (MessageBox::Show("Czy na pewno chcesz usun¹æ wybrany podmioit?", "UWAGA!!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
 
-					 polecenie->CommandText = "DELETE  FROM podmiot WHERE podmiot_id=" + id_rekordu + ";";
+					 polecenie->CommandText = "DELETE  FROM symygy_service.podmiot WHERE podmiot_id=" + id_rekordu + ";";
 					 polecenie->ExecuteNonQuery();
 
 					 transakcja->Commit(); // rozpoczecie transakcji mysql
@@ -1482,7 +1483,7 @@ private: System::Void btnPPrzypisz_Click(System::Object^  sender, System::EventA
 }
 private: System::Void btnUstSzukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja); //polaczenie zbaza
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM serwis.uzytkownik WHERE CONCAT(login, imie,' ',nazwisko) LIKE '%" + tbUstSzukaj->Text + "%' ORDER BY login;", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM symygy_service.uzytkownik WHERE CONCAT(login, imie,' ',nazwisko) LIKE '%" + tbUstSzukaj->Text + "%' ORDER BY login;", laczBaze);
 
 			 try{
 				 MySqlDataAdapter^ moja = gcnew MySqlDataAdapter(); //interfejs miedzy danymi a baza
@@ -1530,7 +1531,7 @@ private: System::Void dgUstawienia_CellClick(System::Object^  sender, System::Wi
 private: System::Void btnUstModyfikuj_Click(System::Object^  sender, System::EventArgs^  e) {
 			 // zamiana hasla
 			 MySqlConnection^ laczBaze = gcnew MySqlConnection(konfiguracja);
-			 MySqlCommand^ zapytanie = gcnew MySqlCommand("UPDATE uzytkownik SET haslo = PASSWORD('" + tbUstNoweH->Text + "') WHERE uzytkownik_id = " + id_rekordu + " AND haslo = PASSWORD('" + tbUstStareH->Text + "');", laczBaze);
+			 MySqlCommand^ zapytanie = gcnew MySqlCommand("UPDATE symygy_service.uzytkownik SET haslo = PASSWORD('" + tbUstNoweH->Text + "') WHERE uzytkownik_id = " + id_rekordu + " AND haslo = PASSWORD('" + tbUstStareH->Text + "');", laczBaze);
 			 try {
 				 laczBaze->Open();
 				 if (zapytanie->ExecuteNonQuery()){
@@ -1572,7 +1573,7 @@ private: System::Void btnUstDodaj_Click(System::Object^  sender, System::EventAr
 				 polecenie->Transaction = transakcja;
 
 				 try{
-					 polecenie->CommandText = "INSERT INTO uzytkownik SET imie='" + tbUstImie->Text + "', nazwisko='" + tbUstNazwisko->Text + "', login='" + tbUstLogin->Text + "', haslo=PASSWORD('" + tbUstStareH->Text + "');";
+					 polecenie->CommandText = "INSERT INTO symygy_service.uzytkownik SET imie='" + tbUstImie->Text + "', nazwisko='" + tbUstNazwisko->Text + "', login='" + tbUstLogin->Text + "', haslo=PASSWORD('" + tbUstStareH->Text + "');";
 					 polecenie->ExecuteNonQuery();
 
 					 MessageBox::Show("U¿ytkownik zosta³ dodany do bazy danych.");
@@ -1612,7 +1613,7 @@ private: System::Void btnUstUsun_Click(System::Object^  sender, System::EventArg
 
 				 try{
 					 if (MessageBox::Show("Czy na pewno chcesz usun¹æ wybranego u¿ytkownika?", "UWAGA!!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes){
-						 polecenie->CommandText = "DELETE  FROM uzytkownik WHERE uzytkownik_id=" + id_rekordu + ";";
+						 polecenie->CommandText = "DELETE  FROM symygy_service.uzytkownik WHERE uzytkownik_id=" + id_rekordu + ";";
 						 polecenie->ExecuteNonQuery();  // najpierw usuwamy z godziny bo to jest pochodna tabeli uzytkownik wiec na odwrot sie nie da
 						 transakcja->Commit(); // rozpoczecie transakcji mysql
 						 MessageBox::Show("U¿ytkownik zosta³ usuniêty");
